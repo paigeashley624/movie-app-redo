@@ -3,4 +3,35 @@ class Api::MoviesController < ApplicationController
     @movies = Movie.all
     render "index.json.jb"
   end
+
+  def create
+    @movies = Movie.new(
+      title: params[:title],
+      year: params[:year],
+      plot: params[:plot],
+    )
+    @movies.save
+    render "show.json.jb"
+  end
+
+  def show
+    id = params[:id]
+    @movies = Movie.find(id)
+    render "show.json.jb"
+  end
+
+  def update
+    @movies = Movie.find_by(id: params[:id])
+    @movies.title = params[:title] || @movies.title
+    @movies.yeat = params[:year] || @movies.year
+    @movies.plot = params[:plot] || @movies.plot
+    @movies.save
+    render "show.json.jb"
+  end
+
+  def destroy
+    movies = Movie.find_by(id: params[:id])
+    movies.destroy
+    render json: { message: "Listing deleted" }
+  end
 end

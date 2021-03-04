@@ -9,6 +9,7 @@ class Api::MoviesController < ApplicationController
       title: params[:title],
       year: params[:year],
       plot: params[:plot],
+      english: true,
     )
     @movies.save
     render "show.json.jb"
@@ -23,8 +24,9 @@ class Api::MoviesController < ApplicationController
   def update
     @movies = Movie.find_by(id: params[:id])
     @movies.title = params[:title] || @movies.title
-    @movies.yeat = params[:year] || @movies.year
+    @movies.year = params[:year] || @movies.year
     @movies.plot = params[:plot] || @movies.plot
+    @movies.english
     @movies.save
     render "show.json.jb"
   end

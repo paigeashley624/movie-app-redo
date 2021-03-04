@@ -4,5 +4,6 @@
     title: movies.title,
     year: movies.year,
     plot: movies.plot,
+    english: movies.english,
   }
 end

@@ -11,6 +11,7 @@ class Api::ActorsController < ApplicationController
       known_for: params[:known_for],
       age: params[:age]
       gender: paramas[:gender]
+      movie_id: params[:movie_id]
     )
     if @actors.save
       render "show.json.jb"

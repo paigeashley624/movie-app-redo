@@ -1,0 +1,3 @@
+{
+  movie_plot: actor.movie.plot,
+}

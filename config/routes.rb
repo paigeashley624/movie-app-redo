@@ -29,5 +29,9 @@ Rails.application.routes.draw do
     post "/admins/", controller: "admins", action: "create"
     patch "/admins/:id", controller: "admins", action: "update"
     delete "/admins/:id", controller: "admins", action: "destroy"
+
+    #Movie_genres
+
+    post "/movie_genres", controller: "movie_genres", action: "create"
   end
 end

@@ -5,6 +5,6 @@ class Movie < ApplicationRecord
   validates :director, presence: true
 
   has_many :actors
-  belongs_to :genre
-  # has_many :genres through :movie_genres
+  has_many :movie_genres
+  has_many :genres through: :movie_genres
 end

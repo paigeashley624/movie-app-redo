@@ -1,11 +1,11 @@
-@movies.map do |movies|
+@movies.map do |movie|
   {
-    id: movies.id,
-    title: movies.title,
-    year: movies.year,
-    plot: movies.plot,
-    english: movies.english,
+    id: movie.id,
+    title: movie.title,
+    year: movie.year,
+    plot: movie.plot,
+    english: movie.english,
 
-    genres: movie.genres
+    genres: movie.genres,
   }
 end

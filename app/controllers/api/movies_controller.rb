@@ -6,6 +6,12 @@ class Api::MoviesController < ApplicationController
     render "index.json.jb"
   end
 
+  def show
+    id = params[:id]
+    @movies = Movie.find(id)
+    render "show.json.jb"
+  end
+
   def create
     @movies = Movie.new(
       title: params[:title],
@@ -18,12 +24,6 @@ class Api::MoviesController < ApplicationController
     else
       render json: { errors: @actors.error.full_messages }, status: 406
     end
-  end
-
-  def show
-    id = params[:id]
-    @movies = Movie.find(id)
-    render "show.json.jb"
   end
 
   def update

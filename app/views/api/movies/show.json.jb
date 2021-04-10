@@ -4,6 +4,5 @@
   year: @movies.year,
   plot: @movies.plot,
   english: @movies.english,
-
-  genres: movie.genres,
+# genres: @movie.genres,
 }

@@ -3,6 +3,7 @@
   title: @movies.title,
   year: @movies.year,
   plot: @movies.plot,
+  image: @movies.image,
   english: @movies.english,
 # genres: @movie.genres,
 }

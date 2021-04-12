@@ -1,9 +1,15 @@
 class Api::MoviesController < ApplicationController
-  before_action :authenticate_admin, except: [:index, :show]
+  # before_action :authenticate_admin, except: [:index, :show]
 
   def index
     @movies = Movie.all.where(english: true)
     render "index.json.jb"
+    # if current_user
+    #   @movies = Movie.all.where(english: true)
+    #   render "index.json.jb"
+    # else
+    #   render json: []
+    # end
   end
 
   def show
@@ -17,7 +23,10 @@ class Api::MoviesController < ApplicationController
       title: params[:title],
       year: params[:year],
       plot: params[:plot],
+      director: params[:director],
       english: true,
+      image: params[:image],
+      # user_id: current_user.id, #unsure of how this should work
     )
     if @movies.save
       render "show.json.jb"
@@ -31,6 +40,8 @@ class Api::MoviesController < ApplicationController
     @movies.title = params[:title] || @movies.title
     @movies.year = params[:year] || @movies.year
     @movies.plot = params[:plot] || @movies.plot
+    @movies.director = params[:director] || @movies.director
+    @movies.image = params[:image] || @movies.image
     @movies.english = true
     if @movies.save
       render "show.json.jb"

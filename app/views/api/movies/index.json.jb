@@ -4,6 +4,7 @@
     title: movie.title,
     year: movie.year,
     plot: movie.plot,
+    image: movie.image,
     english: movie.english,
 
     genres: movie.genres,

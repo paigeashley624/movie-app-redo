@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_04_09_145227) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "gender"
-    t.string "age"
+    t.integer "age"
     t.integer "movie_id"
   end
 

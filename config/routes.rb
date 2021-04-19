@@ -32,6 +32,6 @@ Rails.application.routes.draw do
 
     #Movie_genres
 
-    post "/movie_genres", controller: "movie_genres", action: "create"
+    post "/moviegenres/", controller: "movie_genres", action: "create"
   end
 end

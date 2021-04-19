@@ -6,7 +6,6 @@
     plot: movie.plot,
     image: movie.image,
     english: movie.english,
-
     genres: movie.genres,
   }
 end

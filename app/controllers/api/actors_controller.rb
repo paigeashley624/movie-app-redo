@@ -1,47 +1,46 @@
 class Api::ActorsController < ApplicationController
+  # before_action :authenticate_admin, except: [:index, :show]
 
-  before_action :authenticate_admin, except: [:index, :show]
-  
   def index
-    actors = Actor.all.order(age: :desc)
+    @actors = Actor.all.order(age: :desc)
     render "index.json.jb"
-  end
-
-  def create
-    @actors = Actor.new(
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      known_for: params[:known_for],
-      age: params[:age]
-      gender: paramas[:gender]
-      movie_id: params[:movie_id]
-    )
-    if @actors.save
-      render "show.json.jb"
-      else 
-        render json: {errors: @actors.error.full_messages}, status: 406
-    end
   end
 
   def show
     id = params[:id]
-    @actors = Actor.find(id)
+    @actor = Actor.find(id)
     render "show.json.jb"
   end
 
+  def create
+    @actor = Actor.new(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      known_for: params[:known_for],
+      gender: params[:gender],
+      age: params[:age],
+      movie_id: params[:movie_id],
+    )
+    if @actor.save
+      render "show.json.jb"
+    else
+      render json: { errors: @actors.error.full_messages }, status: 406
+    end
+  end
+
   def update
-    @actors = Actor.find_by(id: params[:id])
-    @actors.first_name = params[:first_name] || @actors.first_name
-    @actors.last_name = params[:last_name] || @actors.last_name
-    @actors.known_for = params[:known_for] || @actors.known_for
-    @actors.age
-    @actors.gender
-    
-    if @actors.save
-    render "show.json.jb"
-    else 
-      render json: {errors: @actors.error.full_messages}, status: 406
-    end 
+    @actor = Actor.find_by(id: params[:id])
+    @actor.first_name = params[:first_name] || @actor.first_name
+    @actor.last_name = params[:last_name] || @actor.last_name
+    @actor.known_for = params[:known_for] || @actor.known_for
+    @actor.age
+    @actor.gender
+
+    if @actor.save
+      render "show.json.jb"
+    else
+      render json: { errors: @actor.error.full_messages }, status: 406
+    end
   end
 
   def destroy

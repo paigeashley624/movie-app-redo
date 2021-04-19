@@ -1,11 +1,10 @@
-@actors.map do |actors|
+@actors.map do |actor|
   {
-    id: actors.id,
-    first_name: actors.first_name,
-    last_name: actors.last_name,
-    known_for: actors.known_for,
-    age: actors.age,
-    gender: actors.gender,
-
+    id: actor.id,
+    first_name: actor.first_name,
+    last_name: actor.last_name,
+    known_for: actor.known_for,
+    age: actor.age,
+    gender: actor.gender,
   }
 end

@@ -26,12 +26,12 @@ class Api::MoviesController < ApplicationController
       director: params[:director],
       english: true,
       image: params[:image],
-      # user_id: current_user.id, #unsure of how this should work
+      # user_id: current_user.id,
     )
     if @movies.save
       render "show.json.jb"
     else
-      render json: { errors: @actors.error.full_messages }, status: 406
+      render json: { errors: @movies.error.full_messages }, status: 406
     end
   end
 
@@ -43,10 +43,11 @@ class Api::MoviesController < ApplicationController
     @movies.director = params[:director] || @movies.director
     @movies.image = params[:image] || @movies.image
     @movies.english = true
+
     if @movies.save
       render "show.json.jb"
     else
-      render json: { errors: @actors.error.full_messages }, status: 406
+      render json: { errors: @movies.error.full_messages }, status: 406
     end
   end
 
